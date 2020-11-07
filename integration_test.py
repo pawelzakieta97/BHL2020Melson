@@ -9,37 +9,37 @@ servo = ServoMotorControls(2, 12, 50)
 
 kosz = 0
 
-servo.set_angle(0)
+servo.set_angle(20)
 motor.set_speed(50)
-time.sleep(2)
+time.sleep(1)
 enkoder = Enkoder(motor)
 
 while True:
     motor.set_speed(-50)
     print(enkoder.get_cnt())
-    if enkoder.get_cnt()*enkoder.get_cnt() >= 60 and kosz==0:
+    if enkoder.get_cnt()*enkoder.get_cnt() >= 24 and kosz==0:
         motor.set_speed(0)
         time.sleep(1)
         servo.set_angle(90)
         time.sleep(1)
-        servo.set_angle(0)
+        servo.set_angle(20)
         time.sleep(1)
         kosz = 1
 
-    if enkoder.get_cnt()*enkoder.get_cnt() >= 300 and kosz==1:
+    if enkoder.get_cnt()*enkoder.get_cnt() >= 250 and kosz==1:
         motor.set_speed(0)
         time.sleep(1)
         servo.set_angle(90)
         time.sleep(1)
-        servo.set_angle(0)
+        servo.set_angle(20)
         time.sleep(1)
         kosz = 2
 
-    if enkoder.get_cnt()*enkoder.get_cnt() >= 700 and kosz==2:
+    if enkoder.get_cnt()*enkoder.get_cnt() >= 380 and kosz==2:
         motor.set_speed(0)
         time.sleep(1)
         servo.set_angle(90)
         time.sleep(1)
-        servo.set_angle(0)
+        servo.set_angle(20)
         time.sleep(1)
         break

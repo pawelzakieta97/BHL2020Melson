@@ -3,9 +3,10 @@ import requests
 
 # to search 
 query = "ean: 5902198161035"
-VOCABULARY = {'metal': ['puszka', '330ml', '330 ml', '330 ML', '250ml', '250 ml', 'metal', 'aluminium'],
+VOCABULARY = {'metal': ['puszka', '250ml', '250 ml', 'metal', 'aluminium'],
               'plastic': ['bottle', '2l', '2L', '1,5l', 'plastik'],
-              'paper': ['papier', 'carton', 'karton', 'paper']}
+              'paper': ['papier', 'carton', 'karton', 'paper'],
+              'glass': ['szkl', 'szkł', 'butelka', 'glasss']}
 
 
 def get_type(query):
