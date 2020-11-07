@@ -10,9 +10,9 @@ VOCABULARY = {'metal': ['puszka', '330ml', '330 ml', '330 ML', '250ml', '250 ml'
 
 def get_type(query):
     best_class = None
-    urls = search(query, tld="com", num=10, stop=10, pause=2)
+    urls = [url for url in search(query, num=5, stop=5, pause=0.5)]
     freq = {}
-    for url in urls[1:10]:
+    for url in urls:
         if '.pdf' in url:
             continue
         try:
@@ -23,7 +23,10 @@ def get_type(query):
         for trash_type in VOCABULARY.keys():
             frequency = 0
             for keyword in VOCABULARY[trash_type]:
-                count = r.content.decode('utf-8').upper().count(keyword.upper())
+                try:
+                    count = r.content.decode('utf-8').upper().count(keyword.upper())
+                except UnicodeDecodeError:
+                    continue
                 frequency += count
                 freq[keyword] = count
                 if frequency > best_frequency:
